@@ -80,7 +80,9 @@ bool HelloWorld::init()
     this->addChild(sprite, 0);
     
     auto data = FileUtils::getInstance()->getDataFromFile("parcel.json");
-    CCLOG("%s", data.getBytes());
+    Json::Value json(data.getBytes());
+    
+    Point p1 = 
     
     return true;
 }

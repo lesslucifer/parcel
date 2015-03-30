@@ -18,7 +18,6 @@
 
 namespace parcel {
     
-    class
     struct ParcelShortcut
     {
     private:
@@ -26,18 +25,18 @@ namespace parcel {
         std::vector<std::string> data;
         
     public:
-        const std::string& getTypeID()
+        const std::string& getTypeID() const
         {
             return this->typeId;
         }
         
-        const std::string& operator[](const unsigned int &idx)
+        const std::string& operator[](const unsigned int &idx) const
         {
             return this->data[idx];
         }
         
         template<typename T>
-        Parcel<Json::Value, T> getData(const unsigned int &idx)
+        Parcel<Json::Value, T> getData(const unsigned int &idx) const
         {
             auto &s = data[idx];
             auto json = Json::Value(s);
@@ -55,22 +54,53 @@ namespace parcel {
     public:
         Parcel<>(const Json::Value &v)
         {
-            // throw exceptions
-            if (v.isString())
+            if (!v.isString())
             {
+                // throw exceptions
+                return;
+            }
+            
+            string s = v.asString();
+            if (s.length() <= 0 || s[0] != '#')
+                return; // throw exceptions;
+            
+            size_t pos = 1;
+            char delim = '_';
+            bool hastypeID = false;
+            while ((pos = s.find(delim, pos)) != std::string::npos)
+            {
+                string ss = s.substr(0, pos);
+                if (!hastypeID)
+                {
+                    shortcut.typeId = ss;
+                }
+                else
+                {
+                    shortcut.data.push_back(ss);
+                }
                 
+                s.erase(0, pos + 1);
+            }
+            
+            if (!hastypeID)
+            {
+                shortcut.typeId = s;
+            }
+            else
+            {
+                shortcut.data.push_back(s);
             }
         }
         
-        const float& get(float *f)
+        const ParcelShortcut& get(ParcelShortcut *sh)
         {
-            if (f != nullptr)
+            if (sh != nullptr)
             {
-                (*f) = this->value;
-                return *f;
+                *sh = this->shortcut;
+                return *sh;
             }
             
-            return this->value;
+            return this->shortcut;
         }
     };
 }

@@ -13,6 +13,7 @@
 #include "Parcel.hpp"
 #include "jsonserialization.h"
 #include "Float.h"
+#include "Shortcut.h"
 #include "cocos2d.h"
 
 namespace parcel {
@@ -35,6 +36,12 @@ namespace parcel {
             else if (v.type() == Json::ValueType::stringValue)
             {
                 // init as string shortcut
+                Parcel<Json::Value, ParcelShortcut> shortcut(v);
+                if (shortcut.get(nullptr).getTypeID() == "p")   // or P
+                {
+                    p.x = shortcut.get(nullptr).getData<float>(0).get(nullptr);
+                    p.y = shortcut.get(nullptr).getData<float>(1).get(nullptr);
+                }
             }
             
             // throw exception

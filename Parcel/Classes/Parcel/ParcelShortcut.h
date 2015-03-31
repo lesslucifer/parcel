@@ -11,7 +11,7 @@
 
 #pragma once
 
-#include "Parcel.hpp"
+#include "Parcel.h"
 #include "jsonserialization.h"
 #include <string>
 #include <vector>
@@ -67,39 +67,40 @@ namespace parcel {
             size_t pos = 1;
             char delim = '_';
             bool hastypeID = false;
-            while ((pos = s.find(delim, pos)) != std::string::npos)
+            auto push = [&](const string &str)
             {
-                string ss = s.substr(0, pos);
                 if (!hastypeID)
                 {
-                    shortcut.typeId = ss;
+                    shortcut.typeId = str;
+                    hastypeID = true;
                 }
                 else
                 {
-                    shortcut.data.push_back(ss);
+                    shortcut.data.push_back(str);
                 }
+            };
+            
+            while ((pos = s.find(delim, pos)) != std::string::npos)
+            {
+                string ss = s.substr(0, pos);
+                push(ss);
                 
                 s.erase(0, pos + 1);
             }
-            
-            if (!hastypeID)
-            {
-                shortcut.typeId = s;
-            }
-            else
-            {
-                shortcut.data.push_back(s);
-            }
+            push(s);
         }
         
-        const ParcelShortcut& get(ParcelShortcut *sh)
+        const ParcelShortcut& get(ParcelShortcut *sh) const
         {
-            if (sh != nullptr)
-            {
-                *sh = this->shortcut;
-                return *sh;
-            }
+            if (sh == nullptr)
+                return get();
             
+            *sh = this->shortcut;
+            return *sh;
+        }
+        
+        const ParcelShortcut& get() const
+        {
             return this->shortcut;
         }
     };

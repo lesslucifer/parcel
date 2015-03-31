@@ -6,15 +6,19 @@
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>3B6B75F0-1208-4A29-9B61-7F61D926239F</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Parcel</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>5D9406D8A082438E3B24E8459556CE68F7A5B3D9</key>
 		<string>https://github.com/lesslucifer/parcel.git</string>
 	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Parcel/proj.ios_mac/Parcel.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>5D9406D8A082438E3B24E8459556CE68F7A5B3D9</key>
-		<string>parcel/</string>
+		<string>../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/lesslucifer/parcel.git</string>

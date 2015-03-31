@@ -2,9 +2,7 @@
 #include "jsonserialization.h"
 #include <map>
 
-#include "Float.h"
-#include "Point.h"
-#include "Shortcut.h"
+#include "ParcelPoint.h"
 
 USING_NS_CC;
 using namespace std;
@@ -79,10 +77,14 @@ bool HelloWorld::init()
     // add the sprite as a child to this layer
     this->addChild(sprite, 0);
     
-    auto data = FileUtils::getInstance()->getDataFromFile("parcel.json");
-    Json::Value json(data.getBytes());
+    auto data = FileUtils::getInstance()->getStringFromFile("parcel.json");
+    CCLOG("%s", data.c_str());
+    Json::Value json;
+    Json::Reader reader;
+    reader.parse(data, json);
     
-    Point p1 = 
+    Point p = parcel::Parcel<Json::Value, Point>(json["point_shortcut"]).get();
+    CCLOG("%f, %f", p.x, p.y);
     
     return true;
 }

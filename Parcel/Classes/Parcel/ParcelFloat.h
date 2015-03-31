@@ -11,7 +11,7 @@
 
 #pragma once
 
-#include "Parcel.hpp"
+#include "Parcel.h"
 #include "jsonserialization.h"
 #include <string>
 
@@ -44,14 +44,18 @@ namespace parcel {
             // throw exceptions
         }
         
-        const float& get(float *f)
+        const float& get(float *f) const
         {
-            if (f != nullptr)
-            {
-                (*f) = this->value;
-                return *f;
-            }
+            if (f == nullptr)
+                return get();
             
+            (*f) = this->value;
+            return *f;
+            
+        }
+        
+        const float& get() const
+        {
             return this->value;
         }
     };

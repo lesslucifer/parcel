@@ -11,7 +11,6 @@
 #pragma once
 
 #include <stdio.h>
-
 #include <string>
 
 namespace parcel {
@@ -29,12 +28,24 @@ namespace parcel {
 #define __PARCEL_TEMPLATE
 #endif // __GNUC__
     
+    class CloneableParcel
+    {
+    public:
+        virtual CloneableParcel* clone() = 0;
+    };
+    
     template <typename __T_IN = void, typename __T_OUT = void>
-    class Parcel
+    class Parcel : CloneableParcel
     {
     public:
         Parcel<>(const __T_IN &inp);
-        const __T_OUT& get(__T_OUT *outp);
+        const __T_OUT& get(__T_OUT *outp) const;
+        const __T_OUT& get() const;
+        
+        CloneableParcel* clone()
+        {
+            return nullptr;
+        }
     };
 }
 

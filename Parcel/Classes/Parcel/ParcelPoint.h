@@ -10,10 +10,10 @@
 #define Parcel_Json_h
 #pragma once
 
-#include "Parcel.hpp"
+#include "Parcel.h"
 #include "jsonserialization.h"
-#include "Float.h"
-#include "Shortcut.h"
+#include "ParcelFloat.h"
+#include "ParcelShortcut.h"
 #include "cocos2d.h"
 
 namespace parcel {
@@ -29,32 +29,35 @@ namespace parcel {
             {
                 if (v.isMember("x"))
                 {
-                    p.x = Parcel<Json::Value, float>(v["x"]).get(nullptr);
-                    p.y = Parcel<Json::Value, float>(v["y"]).get(nullptr);
+                    p.x = Parcel<Json::Value, float>(v["x"]).get();
+                    p.y = Parcel<Json::Value, float>(v["y"]).get();
                 }
             }
             else if (v.type() == Json::ValueType::stringValue)
             {
                 // init as string shortcut
                 Parcel<Json::Value, ParcelShortcut> shortcut(v);
-                if (shortcut.get(nullptr).getTypeID() == "p")   // or P
+                if (shortcut.get().getTypeID() == "#p")   // or #P
                 {
-                    p.x = shortcut.get(nullptr).getData<float>(0).get(nullptr);
-                    p.y = shortcut.get(nullptr).getData<float>(1).get(nullptr);
+                    p.x = shortcut.get().getData<float>(0).get();
+                    p.y = shortcut.get().getData<float>(1).get();
                 }
             }
             
             // throw exception
         }
         
-        const cocos2d::Point& get(cocos2d::Point *p)
+        const cocos2d::Point& get(cocos2d::Point *p) const
         {
-            if (p != nullptr)
-            {
-                (*p) = this->p;
-                return *p;
-            }
+            if (p == nullptr)
+                return get();
             
+            (*p) = this->p;
+            return *p;
+        }
+        
+        const cocos2d::Point& get() const
+        {
             return this->p;
         }
     };

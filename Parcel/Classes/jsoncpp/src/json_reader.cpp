@@ -4,9 +4,9 @@
 // See file LICENSE for detail or copy at http://jsoncpp.sourceforge.net/LICENSE
 
 #if !defined(JSON_IS_AMALGAMATION)
-# include <json/assertions.h>
-# include <json/reader.h>
-# include <json/value.h>
+# include <json2/assertions.h>
+# include <json2/reader.h>
+//# include <json2/value.h>
 # include "json_tool.h"
 #endif // if !defined(JSON_IS_AMALGAMATION)
 #include <utility>
@@ -69,7 +69,7 @@ in( Reader::Char c, Reader::Char c1, Reader::Char c2, Reader::Char c3, Reader::C
 
 
 static bool 
-containsNewLine( Reader::Location begin, 
+containsNewLine( Reader::Location begin,
                  Reader::Location end )
 {
    for ( ;begin < end; ++begin )

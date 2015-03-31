@@ -11,8 +11,7 @@
 
 #pragma once
 
-#include "Parcel.h"
-#include "jsonserialization.h"
+#include "ParcelJson.h"
 #include <string>
 #include <vector>
 
@@ -71,7 +70,7 @@ namespace parcel {
             {
                 if (!hastypeID)
                 {
-                    shortcut.typeId = str;
+                    std::transform(str.begin(), str.end(), shortcut.typeId.begin(), ::tolower);
                     hastypeID = true;
                 }
                 else

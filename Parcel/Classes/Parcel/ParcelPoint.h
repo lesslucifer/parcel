@@ -10,8 +10,7 @@
 #define Parcel_Json_h
 #pragma once
 
-#include "Parcel.h"
-#include "jsonserialization.h"
+#include "ParcelJson.h"
 #include "ParcelFloat.h"
 #include "ParcelShortcut.h"
 #include "cocos2d.h"

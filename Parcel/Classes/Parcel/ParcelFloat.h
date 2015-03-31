@@ -11,8 +11,7 @@
 
 #pragma once
 
-#include "Parcel.h"
-#include "jsonserialization.h"
+#include "ParcelJson.h"
 #include <string>
 
 namespace parcel {

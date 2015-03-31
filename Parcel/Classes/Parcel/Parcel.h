@@ -28,6 +28,7 @@ namespace parcel {
 #define __PARCEL_TEMPLATE
 #endif // __GNUC__
     
+    template <typename __T_IN = void>
     class CloneableParcel
     {
     public:
@@ -35,14 +36,14 @@ namespace parcel {
     };
     
     template <typename __T_IN = void, typename __T_OUT = void>
-    class Parcel : CloneableParcel
+    class Parcel : CloneableParcel<__T_IN>
     {
     public:
         Parcel<>(const __T_IN &inp);
         const __T_OUT& get(__T_OUT *outp) const;
         const __T_OUT& get() const;
         
-        CloneableParcel* clone()
+        CloneableParcel<__T_IN>* clone()
         {
             return nullptr;
         }

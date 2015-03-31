@@ -3,6 +3,7 @@
 #include <map>
 
 #include "ParcelPoint.h"
+#include "ParcelJsonParser.h"
 
 USING_NS_CC;
 using namespace std;
@@ -83,7 +84,7 @@ bool HelloWorld::init()
     Json::Reader reader;
     reader.parse(data, json);
     
-    Point p = parcel::Parcel<Json::Value, Point>(json["point_shortcut"]).get();
+    Point p = parcel::JsonParcel<Point>(json["point_shortcut"]).get();
     CCLOG("%f, %f", p.x, p.y);
     
     return true;

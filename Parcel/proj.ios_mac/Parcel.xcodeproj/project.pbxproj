@@ -201,6 +201,9 @@
 		7604A0D21ACA461C00EFC0C5 /* strserialization.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = strserialization.hpp; sourceTree = "<group>"; };
 		7604A0D31ACA461C00EFC0C5 /* uint.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = uint.hpp; sourceTree = "<group>"; };
 		7604A0D41ACA461C00EFC0C5 /* vector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = vector.hpp; sourceTree = "<group>"; };
+		7604A0DE1ACA507800EFC0C5 /* ParcelParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParcelParser.h; sourceTree = "<group>"; };
+		7604A0DF1ACA50EC00EFC0C5 /* ParcelJsonParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParcelJsonParser.h; sourceTree = "<group>"; };
+		7604A0E01ACA517B00EFC0C5 /* ParcelJson.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParcelJson.h; sourceTree = "<group>"; };
 		761C0F6A1AC95064004C7073 /* parcel.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = parcel.json; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -469,6 +472,7 @@
 			children = (
 				761C0F721AC95466004C7073 /* json */,
 				7604A0631ACA3C8300EFC0C5 /* Parcel.h */,
+				7604A0DE1ACA507800EFC0C5 /* ParcelParser.h */,
 			);
 			path = Parcel;
 			sourceTree = "<group>";
@@ -478,6 +482,8 @@
 			children = (
 				7604A0641ACA3C9500EFC0C5 /* ParcelFloat.h */,
 				7604A0651ACA3C9500EFC0C5 /* ParcelShortcut.h */,
+				7604A0DF1ACA50EC00EFC0C5 /* ParcelJsonParser.h */,
+				7604A0E01ACA517B00EFC0C5 /* ParcelJson.h */,
 				761C0F731AC9546B004C7073 /* cocos2dx */,
 			);
 			name = json;
